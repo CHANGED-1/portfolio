@@ -81,16 +81,61 @@ $recent_projects = mysqli_query($conn, $sql);
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="stat-info">
-                        <h3><?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects WHERE featured = 1")); ?></h3>
-                        <p>Featured Projects</p>
+                        <h3><?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects WHERE status = 'completed'")); ?></h3>
+                        <p>Completed Projects</p>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Recent Projects -->
+            <div class="admin-section">
+                <div class="section-header">
+                    <h2>Recent Projects</h2>
+                    <a href="add-project.php" class="btn btn-primary">Add New</a>
+                </div>
                 
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <!-- <div class="stat-info">
-                        <h3> -->
-                            <?php 
-                            // echo mysqli_
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while($project = mysqli_fetch_assoc($recent_projects)): ?>
+                            <tr>
+                                <td>
+                                    <strong><?php echo $project['title']; ?></strong>
+                                    <?php if($project['featured']): ?>
+                                        <span class="badge badge-warning">Featured</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?php echo $project['category_name']; ?></td>
+                                <td>
+                                    <span class="badge badge-<?php echo $project['status']; ?>">
+                                        <?php echo ucfirst($project['status']); ?>
+                                    </span>
+                                </td>
+                                <td><?php echo format_date($project['created_at']); ?></td>
+                                <td>
+                                    <a href="edit-project.php?id=<?php echo $project['id']; ?>" class="btn-icon" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="delete-project.php?id=<?php echo $project['id']; ?>" class="btn-icon btn-danger" title="Delete" onclick="return confirm('Are you sure?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

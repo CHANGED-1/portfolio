@@ -7,7 +7,7 @@ define('DB_NAME', 'portfolio_db');
 
 // Site Configuration
 define('SITE_NAME', 'My Portfolio');
-define('SITE_URL', 'http://localhost:8000');
+define('SITE_URL', 'http://localhost:8001');
 define('ADMIN_EMAIL', 'admin@portfolio.com');
 
 // File Upload Configuration
