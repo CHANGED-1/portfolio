@@ -512,7 +512,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ## 👨‍💻 Author
 
-**Your Name**
+**Guloba Moses**
 - Website: [yourwebsite.com](https://yourwebsite.com)
 - GitHub: [@CHANGED-1](https://github.com/CHANGED-1/)
 <!-- - LinkedIn: [Your Name](https://linkedin.com/in/yourprofile) -->
